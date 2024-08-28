@@ -1,31 +1,21 @@
 import { DigiLayoutContainer } from "@digi/arbetsformedlingen-react"
-import { useEffect, useState } from "react"
-import { IAds } from "../models/IAds"
-import { getAllAds } from "../services/addService";
+import { useContext, } from "react"
+import { AdContext } from "../context/AdContext";
 
-
+//ta emot input här
 export const CreateHtml = () => {
-  const [ads, setAds] = useState<IAds>();
 
-  useEffect(() => {
-    const getApi = async () => {
-
-
-      const ImportedAds = await getAllAds();
-      setAds(ImportedAds);
-    }
-    getApi();
-  }, [])
+  const ad = useContext(AdContext)
 
   return (
     <>
-      {ads?.hits.map((ad) => {
+      {ad.map((ads) => {
         return (
-          <DigiLayoutContainer afVerticalPadding key={ad.id}>
-            <h2>{ad.headline}</h2>
-            <p>Tjänst typ: {ad.working_hours_type.label}</p>
-            <p>{ad.employer.name}</p>
-            <p>{ad.workplace_address.postcode} {ad.workplace_address.city}</p>
+          <DigiLayoutContainer afVerticalPadding key={ads.id}>
+            <h2>{ads.headline}</h2>
+            <p>Tjänst typ: {ads.working_hours_type.label}</p>
+            <p>{ads.employer.name}</p>
+            <p>{ads.workplace_address.postcode} {ads.workplace_address.city}</p>
           </DigiLayoutContainer >)
 
       })}
