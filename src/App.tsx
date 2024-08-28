@@ -1,21 +1,31 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { router } from "./router/Router";
-import { useEffect, useState } from "react";
-import { AdContext } from "./context/AdContext";
+import {  useEffect, useState } from "react";
+import { AdContext, IAdContext } from "./context/AdContext";
 import { getAllAds } from "./services/addService";
-import { IHits } from "./models/IHits";
+
 
 function App() {
-  const [ads, setAds] = useState<IHits[]>([]);
+  const [ads, setAds] = useState<IAdContext>({
+    hits: [],
+    search: () =>{}
+  });
+
 
   useEffect(() => {
     const getApi = async () => {
-      const ImportedAds = await getAllAds(); // lägg in input här
-      setAds(ImportedAds.hits);
+      const ImportedAds = await getAllAds("Stockholm"); // lägg in input här
+      setAds({...ads,hits:ImportedAds.hits});
     }
     getApi();
   }, []);
+
+
+  ads.search = async (text: string) => {
+    const searchResult = await getAllAds(text)
+    setAds({...ads,hits:searchResult.hits})
+  }
 
   return <>
     <AdContext.Provider value={ads}>

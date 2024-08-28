@@ -1,24 +1,31 @@
 import { FormInputSearchVariation, FormInputType } from "@digi/arbetsformedlingen"
 import { DigiFormInputSearch } from "@digi/arbetsformedlingen-react"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AdContext } from "../context/AdContext";
 
 // interface InputProps {
 //   search: (inputText: string) => void
 // }
 
 export const Input = () => {
-  const [inputValue, setInputValue] = useState("stockholm");
+  const [inputValue, setInputValue] = useState("");
+  const { search } = useContext(AdContext)
 
+  const handleSubmit = (valueText: string) => {
+    search(valueText)
+    console.log(valueText);
+  }
 
   return (
     <>
       <DigiFormInputSearch
-        afLabel="Etikett"
+        afLabel="Sök efter ditt nya jobb!"
         afVariation={FormInputSearchVariation.MEDIUM}
         afType={FormInputType.SEARCH}
-        afButtonText="Knapptext"
-        value={inputValue}
-        onChange={(e) => setInputValue((e.target as HTMLInputElement).value)}
+        afButtonText="Sök"
+        onAfOnChange={(e) => setInputValue(e.target.value)}
+        onAfOnSubmitSearch={() => { handleSubmit(inputValue) }}
+        afValue={inputValue}
       >
       </DigiFormInputSearch>
     </>

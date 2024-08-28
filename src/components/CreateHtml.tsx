@@ -5,11 +5,11 @@ import { AdContext } from "../context/AdContext";
 //ta emot input här
 export const CreateHtml = () => {
 
-  const ad = useContext(AdContext)
+  const {hits} = useContext(AdContext)
 
   return (
     <>
-      {ad.map((ads) => {
+      {hits.map((ads) => {
         return (
           <DigiLayoutContainer afVerticalPadding key={ads.id}>
             <h2>{ads.headline}</h2>
