@@ -6,3 +6,4 @@ export const getAllAds = async (): Promise<IAds> => {
   const data = await getData<IAds>(url);
   return data;
 }
+
