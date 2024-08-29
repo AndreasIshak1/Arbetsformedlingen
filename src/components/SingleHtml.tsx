@@ -24,6 +24,7 @@ export const SingleHtml = () => {
 
     <>
       <DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY}>
+
         <DigiLayoutContainer afVerticalPadding>
           <img src={singleAd?.logo_url} alt="logo" />
           <h2>{singleAd?.headline}</h2>
@@ -41,7 +42,6 @@ export const SingleHtml = () => {
           </DigiLinkExternal>
 
           <p>{parse(singleAd?.description.text_formatted ? singleAd?.description.text_formatted : "")}</p>
-
 
         </DigiLayoutContainer>
 
