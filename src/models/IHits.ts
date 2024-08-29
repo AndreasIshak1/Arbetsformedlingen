@@ -4,6 +4,7 @@ export interface IHits {
   logo_url: string,
   description: {
     text: string;
+    text_formatted: string;
   },
   employment_type: {
     label: string;
@@ -24,5 +25,8 @@ export interface IHits {
     country: string,
     postcode: string;
     street_adress: string;
+  }
+  application_details: {
+    url: string;
   }
 }
