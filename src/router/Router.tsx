@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../pages/Layout";
 import { Home } from "../pages/Home";
-import { AddSingle } from "../pages/AddSingle";
+import { AdSinglePage } from "../pages/AdSinglePage";
 
 export const router = createBrowserRouter([
   {
@@ -13,8 +13,8 @@ export const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: "/:id",
-        element: <AddSingle />
+        path: "/ad/:id",
+        element: <AdSinglePage />
       }
     ]
   }
