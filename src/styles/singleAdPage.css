@@ -3,13 +3,13 @@
 } */
 
 .digi-layout-container {
-   display: flex;
-/* justify-content: center; */
-width: 100%;
-margin: 0px;
+  display: flex;
+  /* justify-content: center; */
+  width: 100%;
+  margin: 0px;
 }
 
- /* .digi-layout-container:nth-child(1){
+/* .digi-layout-container:nth-child(1){
   flex-grow:1;
 } 
 
@@ -17,28 +17,29 @@ margin: 0px;
   flex-grow:1;
 }  */
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
   .digi-layout-container {
     flex-wrap: wrap;
- }
+  }
 }
 
- .sc-digi-layout-block-h {
-    display: flex;
-    flex-direction: column;   
-} 
-
+.sc-digi-layout-block-h {
+  display: flex;
+  flex-direction: column;
+}
 
 .digi-info-card {
   background-color: orange;
   display: flex;
   flex-direction: row;
   border-radius: 10px;
-
 }
 
-.infoLeft{
+.infoLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
-} 
+}
 
 /* igi-info-card digi-info-card--primary */
