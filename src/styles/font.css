@@ -1,5 +1,6 @@
 :root {
   --digi--color--text--primary: red;
+  --digi--global--text-width--base:65rem;
 }
 
 .digi-layout-container {
