@@ -24,7 +24,7 @@ export interface IHits {
     region: string,
     country: string,
     postcode: string;
-    street_adress: string;
+    street_address: string;
   }
   application_details: {
     url: string;

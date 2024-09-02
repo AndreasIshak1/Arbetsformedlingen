@@ -25,10 +25,9 @@ export const SingleHtml = () => {
 
 
 
-      <DigiLayoutContainer afVerticalPadding>
+      <DigiLayoutContainer>
 
         <DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY}>
-
           <section className="infoLeft">
             <img src={singleAd?.logo_url} alt="logo" />
             <h2>{singleAd?.headline}</h2>
@@ -36,12 +35,20 @@ export const SingleHtml = () => {
             <p>{singleAd?.employer.name}</p>
             <p>{singleAd?.workplace_address.postcode} {singleAd?.workplace_address.city}</p>
 
-            <p>{parse(singleAd?.description.text_formatted ? singleAd?.description.text_formatted : "")}</p>
-
+            <DigiInfoCard
+              afHeading="Jag är ett infokort"
+              afHeadingLevel={InfoCardHeadingLevel.H3}
+              afType={InfoCardType.TIP}
+              afLinkHref="Frivillig länk"
+              afLinkText="Frivillig länktext"
+              afVariation={InfoCardVariation.SECONDARY}
+            //afSize={infoCardSize.STANDARD}
+            >
+              <p>{parse(singleAd?.description.text_formatted ? singleAd?.description.text_formatted : "")}</p>
+            </DigiInfoCard>
           </section>
+
         </DigiLayoutBlock >
-
-
 
 
         <DigiInfoCard
@@ -58,11 +65,10 @@ export const SingleHtml = () => {
           >
             Besök hemsida
           </DigiLinkExternal>
-          <p>
-            Det här är bara ord för att illustrera hur det ser ut med text inuti. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Suspendisse commodo egestas elit in consequat. Proin in ex consectetur,
-            laoreet augue sit amet, malesuada tellus.
+          <p>{singleAd?.employer.name}
           </p>
+          <p>{singleAd?.workplace_address.region}</p>
+          <p>Adress :{singleAd?.workplace_address.street_address}, {singleAd?.workplace_address.postcode}</p>
         </DigiInfoCard>
 
 
