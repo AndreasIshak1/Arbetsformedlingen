@@ -1,0 +1,47 @@
+/* .digi-layout-container {
+  display: flex;
+} */
+
+.digi-layout-container {
+   display: flex;
+   
+}
+
+ .digi-layout-container:nth-child(1){
+  flex-grow:2;
+} 
+
+ .digi-layout-container:nth-child(2){
+  flex-grow:1;
+} 
+
+@media (max-width: 1000px){
+  .digi-layout-container {
+    flex-wrap: wrap;  
+ }
+}
+
+ .sc-digi-layout-block-h {
+    display: flex;
+    flex-direction: column;  
+} 
+
+
+
+.myContainer {  
+  display: flex;
+}
+
+.digi-info-card {
+  background-color: orange;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+/* .infoLeft{
+  width: 60%;
+} */
+
+/* igi-info-card digi-info-card--primary */
