@@ -3,6 +3,7 @@ import { Layout } from "../pages/Layout";
 import { Home } from "../pages/Home";
 import { AdSinglePage } from "../pages/AdSinglePage";
 import { PageNotFound } from "../pages/PageNotFound";
+import { SavePage } from "../pages/SavePage";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
       {
         path: "/ad/:id",
         element: <AdSinglePage />
+      },
+      {
+        path: "/saved",
+        element: <SavePage />
       },
     ],
     errorElement: <PageNotFound />

@@ -10,14 +10,8 @@ import { ActionType, AdReducer } from "./reducers/buttonReducer";
 import { DispatchContext } from "./context/DispatchContext";
 
 function App() {
-  const [ads, dispatch] = useReducer(AdReducer, { hits: [] })
-  // const [ads, setAds] = useState<IAdContext>({
-  //   hits: [],
-  //   search: () => { },
-  // });
+  const [ads, dispatch] = useReducer(AdReducer, { hits: [], savedAds: []})
   const [location, setLocation] = useState<ILocation>();
-
-  //const [savedCart, dispatch] = useReducer(ButtonReducer, [])
 
   useEffect(() => {
     const getApi = async () => {
@@ -58,12 +52,8 @@ function App() {
 
   console.log(location?.address.city);
 
-  // ads.search = async (text: string) => {
-  //   const searchResult = await getAllAds(text);
-  //   setAds({ ...ads, hits: searchResult.hits });
-  // };
 
-
+  console.log(ads.savedAds);
   return (
     <>
       <AdContext.Provider value={ads}>

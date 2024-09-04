@@ -1,4 +1,5 @@
 import { IAdContext } from "../context/AdContext";
+import { SavedAd } from "../models/SavedAd";
 
 export enum ActionType {
   SAVED,
@@ -26,7 +27,28 @@ export const AdReducer = (ads: IAdContext, action: IAction): IAdContext => {
       return { ...ads, hits: updatedSearched }
     }
 
+    case ActionType.SAVED: {
+      const newSavedAd = ads.hits.find((selectedAd) => selectedAd.id === action.payload);
+
+      if (newSavedAd) {
+
+        if (ads.savedAds.find((ad) => ad.adValue.id === newSavedAd.id)) {
+          return ads
+        } else {
+          const updatedState = { ...ads, savedAds: [...ads.savedAds, new SavedAd(newSavedAd)] }
+
+          localStorage.setItem("savedList", JSON.stringify(updatedState.savedAds))
+
+          return updatedState
+        }
+
+      }
+      else return ads
+    }
+
+
     default:
       return ads
   }
+
 } 
