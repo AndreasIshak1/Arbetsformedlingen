@@ -1,11 +1,11 @@
 .homePage {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border: 1px solid;
   border-radius: 20px;
   padding: 1rem;
   margin: 1rem;
-  width: 80%;
+  width: 50%;
 
   cursor: pointer;
 }
