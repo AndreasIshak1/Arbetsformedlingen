@@ -6,4 +6,4 @@ export interface IAdContext {
     //search: (text:string) => void
 }
 
-export const AdContext = createContext<IAdContext>({hits:[], search: ()=> {}});
+export const AdContext = createContext<IAdContext>({hits:[]});
