@@ -9,3 +9,4 @@ export const getAllAds = async (searchQuery: string): Promise<IAds> => {
   return data;
 }
 
+  
