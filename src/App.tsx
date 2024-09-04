@@ -1,4 +1,4 @@
-import { RouterProvider, useParams } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { router } from "./router/Router";
 import { useEffect, useState } from "react";
@@ -8,14 +8,6 @@ import { getCurrentLocation } from "./services/locationService";
 import { ILocation } from "./models/ILocation";
 
 function App() {
-  const [userLocation, setUserLocation] = useState<
-    | {
-        latitude: number;
-        longitude: number;
-      }
-    | undefined
-  >(undefined);
-
   const [ads, setAds] = useState<IAdContext>({
     hits: [],
     search: () => {},
