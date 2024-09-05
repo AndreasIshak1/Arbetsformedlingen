@@ -1,17 +1,15 @@
-import { IHits } from "../models/IHits"
+import { DigiLayoutContainer } from "@digi/arbetsformedlingen-react"
+import { SavedAdHtml } from "../components/SavedAdHtml"
 
 export const SavePage = () => {
-  const savedList: IHits[] = JSON.parse(localStorage.getItem("saveList") || "[]")
+
 
 
   return (
     <>
-
-      {savedList.map((ad) => {
-        return (<h1 key={ad.id}>{ad.headline}</h1>)
-
-      })}
-    </>
-  )
+     <DigiLayoutContainer>
+      <SavedAdHtml></SavedAdHtml>
+    </DigiLayoutContainer>
+  </>)
 }
 

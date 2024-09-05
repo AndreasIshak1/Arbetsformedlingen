@@ -10,7 +10,7 @@ import { ActionType, AdReducer } from "./reducers/buttonReducer";
 import { DispatchContext } from "./context/DispatchContext";
 
 function App() {
-  const [ads, dispatch] = useReducer(AdReducer, { hits: [], savedAds: []})
+  const [ads, dispatch] = useReducer(AdReducer, { hits: [], savedAds: JSON.parse(localStorage.getItem("savedList") || "[]")})
   const [location, setLocation] = useState<ILocation>();
 
   useEffect(() => {

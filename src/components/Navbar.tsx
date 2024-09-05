@@ -1,23 +1,54 @@
-import { DigiTablist, DigiTablistPanel } from "@digi/arbetsformedlingen-react"
+import { DigiHeader, DigiHeaderNavigation, DigiHeaderNavigationItem } from "@digi/arbetsformedlingen-react"
+import { useState } from "react"
+import { NavLink } from "react-router-dom"
 
 export const Navbar = () => {
+  const [isCurrentPage, setIsCurrentPage] = useState({
+    home: true,
+    saved: false
+  })
+
+  const handleClick = (currentPage: string) => {
+    if (currentPage === "home") {
+      setIsCurrentPage({
+        home: true,
+        saved: false
+      })
+    } else {
+      setIsCurrentPage({
+        home: false,
+        saved: true
+      })
+    }
+
+  }
+
   return (
-    <DigiTablist
-      afTabs={[{ "id": "Hem", "title": "Hem" }, { "id": "Sparade", "title": "Sparade" }, { "id": "Diagram", "title": "Diagram" }]}
-      afAriaLabel="Detaljer om Yrke"
+    <DigiHeader
+      afSystemName="Logo"
+      afHideSystemName={false}
+      afMenuButtonText="Meny"
     >
+      <a slot="header-logo" aria-label="Designsystemets startsida" href="/"></a>
 
-      <DigiTablistPanel tab="Hem">
-        <p>Innehåll som visas när flik "Om Yrket" är aktiv</p>
-      </DigiTablistPanel>
+      <div slot="header-navigation">
+        <DigiHeaderNavigation
+          afCloseButtonText="Stäng"
+          afCloseButtonAriaLabel="Stäng meny"
+          afNavAriaLabel="Huvudmeny"
+        >
+          <NavLink to={"/"}><DigiHeaderNavigationItem afCurrentPage={isCurrentPage.home} onClick={() => handleClick("home")}>
+            <a href="/">home</a>
+          </DigiHeaderNavigationItem></NavLink>
 
-      <DigiTablistPanel tab="Sparade">
-        <p>Innehåll som visas när flik "Arbetsuppgifter" är aktiv</p>
-      </DigiTablistPanel>
+          <NavLink to={"/saved"}><DigiHeaderNavigationItem afCurrentPage={isCurrentPage.saved} onClick={() => handleClick("saved")}>
+            <a href="/">sparade</a>
+          </DigiHeaderNavigationItem></NavLink>
 
-      <DigiTablistPanel tab="Diagram">
-        <p>Innehåll som visas när flik "Förmågor" är aktiv</p>
-      </DigiTablistPanel>
-    </DigiTablist>
+        </DigiHeaderNavigation>
+      </div>
+    </DigiHeader>
+
+
   )
 }

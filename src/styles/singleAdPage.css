@@ -26,6 +26,7 @@
 .sc-digi-layout-block-h {
   display: flex;
   flex-direction: column;
+  min-width: 60%;
 }
 
 .digi-info-card {
