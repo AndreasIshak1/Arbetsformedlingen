@@ -16,7 +16,7 @@ import {
   DigiLinkExternal,
 } from "@digi/arbetsformedlingen-react";
 import parse from "html-react-parser";
-import { SaveButton } from "./SaveButton";
+import { Button } from "./Button";
 import { ActionType } from "../reducers/buttonReducer";
 export const SingleHtml = () => {
   const { id } = useParams<{ id: string }>();
@@ -54,8 +54,6 @@ export const SingleHtml = () => {
               afHeading="Jag är ett infokort"
               afHeadingLevel={InfoCardHeadingLevel.H3}
               afType={InfoCardType.TIP}
-              afLinkHref="Frivillig länk"
-              afLinkText="Frivillig länktext"
               afVariation={InfoCardVariation.SECONDARY}
             //afSize={infoCardSize.STANDARD}
             >
@@ -94,9 +92,9 @@ export const SingleHtml = () => {
             Adress :{singleAd?.workplace_address.street_address},{" "}
             {singleAd?.workplace_address.postcode}
           </p>
-          <SaveButton actionType={ActionType.SAVED} ad={singleAd}>
+          <Button actionType={ActionType.SAVED} ad={singleAd}>
             <><p>Saved</p></>
-          </SaveButton>
+          </Button>
         </DigiInfoCard>
       </DigiLayoutContainer>
     </>

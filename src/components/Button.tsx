@@ -11,7 +11,7 @@ interface IsaveBttonProps {
   ad?: IHits;
 }
 
-export const SaveButton = ({
+export const Button = ({
   actionType,
   children,
   ad,

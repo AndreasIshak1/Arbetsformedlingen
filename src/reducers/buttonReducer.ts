@@ -45,7 +45,15 @@ export const AdReducer = (ads: IAdContext, action: IAction): IAdContext => {
       }
       else return ads
     }
+    case ActionType.REMOVED: {
+      const updatedSavedAds = ads.savedAds.filter((ad) => ad.adValue.id !== action.payload)
 
+      const updateObject = { ...ads, savedAds: updatedSavedAds }
+
+      localStorage.setItem("savedList", JSON.stringify(updatedSavedAds))
+
+      return updateObject
+    }
 
     default:
       return ads

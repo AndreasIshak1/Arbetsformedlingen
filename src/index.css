@@ -4,6 +4,7 @@
 @import "./styles/font.css";
 @import "./styles/singleAdPage.css";
 @import "./styles/homePage.css";
+@import "./styles/savedAdPage.css";
 
 * {
   margin: 0;

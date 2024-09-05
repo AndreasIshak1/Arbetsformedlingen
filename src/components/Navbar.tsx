@@ -25,7 +25,7 @@ export const Navbar = () => {
 
   return (
     <DigiHeader
-      afSystemName="Logo"
+      afSystemName="KarriärJakten"
       afHideSystemName={false}
       afMenuButtonText="Meny"
     >
@@ -38,11 +38,11 @@ export const Navbar = () => {
           afNavAriaLabel="Huvudmeny"
         >
           <NavLink to={"/"}><DigiHeaderNavigationItem afCurrentPage={isCurrentPage.home} onClick={() => handleClick("home")}>
-            <a href="/">home</a>
+            <a href="/">Hem</a>
           </DigiHeaderNavigationItem></NavLink>
 
           <NavLink to={"/saved"}><DigiHeaderNavigationItem afCurrentPage={isCurrentPage.saved} onClick={() => handleClick("saved")}>
-            <a href="/">sparade</a>
+            <a href="/">Sparade</a>
           </DigiHeaderNavigationItem></NavLink>
 
         </DigiHeaderNavigation>
