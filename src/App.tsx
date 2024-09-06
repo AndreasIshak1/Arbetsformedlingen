@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const getApi = async () => {
-      const ImportedAds = await getAllAds("Stockholm");
+      const ImportedAds = await getAllAds("Stockholm" ,"parttime.min=100");
       dispatch({
         type: ActionType.LOADED,
         payload: JSON.stringify(ImportedAds.hits)

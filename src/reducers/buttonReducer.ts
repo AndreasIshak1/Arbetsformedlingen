@@ -5,7 +5,8 @@ export enum ActionType {
   SAVED,
   REMOVED,
   LOADED,
-  SEARCHED
+  SEARCHED,
+  FILTERED
 }
 
 export interface IAction {
@@ -53,6 +54,13 @@ export const AdReducer = (ads: IAdContext, action: IAction): IAdContext => {
       localStorage.setItem("savedList", JSON.stringify(updatedSavedAds))
 
       return updateObject
+    }
+
+    case ActionType.FILTERED: {
+      const updateFilterList = JSON.parse(action.payload);
+      console.log(updateFilterList);
+
+      return { ...ads, hits: updateFilterList }
     }
 
     default:

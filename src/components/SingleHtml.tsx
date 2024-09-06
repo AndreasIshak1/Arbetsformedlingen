@@ -93,7 +93,7 @@ export const SingleHtml = () => {
             {singleAd?.workplace_address.postcode}
           </p>
           <Button actionType={ActionType.SAVED} ad={singleAd}>
-            <><p>Saved</p></>
+            <><p>Spara annons</p></>
           </Button>
         </DigiInfoCard>
       </DigiLayoutContainer>

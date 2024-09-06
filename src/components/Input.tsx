@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { DispatchContext } from "../context/DispatchContext";
 import { ActionType } from "../reducers/buttonReducer";
 import { getAllAds } from "../services/addService";
+import { Filter } from "./Filter";
 
 
 // interface InputProps {
@@ -11,14 +12,16 @@ import { getAllAds } from "../services/addService";
 // }
 
 export const Input = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(JSON.parse(localStorage.getItem("searchValue") || "[]"));
+
 
   const dispatch = useContext(DispatchContext)
   //const { search } = useContext(AdContext)
 
   const handleSubmit = async (valueText: string) => {
+    localStorage.setItem("searchValue", JSON.stringify(inputValue))
 
-    const searchResult = await getAllAds(valueText);
+    const searchResult = await getAllAds(valueText, "parttime.min=100");
 
     dispatch({
       type: ActionType.SEARCHED,
@@ -39,6 +42,7 @@ export const Input = () => {
         afValue={inputValue}
       >
       </DigiFormInputSearch>
+      <Filter></Filter>
     </>
   )
 }
