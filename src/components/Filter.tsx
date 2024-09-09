@@ -6,7 +6,7 @@ import { ActionType } from "../reducers/buttonReducer";
 
 export const Filter = () => {
   const [filterValue, setFilterValue] = useState({
-    fulltime: false,
+    fulltime: true,
     partTime: false,
     fullTimeText: "parttime.min=100",
     partTimeText: "parttime.max=75",
@@ -20,10 +20,18 @@ export const Filter = () => {
   const dispatch = useContext(DispatchContext);
 
   const updateFilter = (filterList: string[]) => {
-    const newCityState = filterValue.cities.map((city) => {
-      return { ...city, isChecked: filterList.includes(city.id) };
-    });
+    let newCityState;
 
+    if (!filterList.includes("1") && !filterList.includes("2")) {
+      console.log("Värde av heltid: ", filterValue.fulltime);
+      newCityState = filterValue.cities.map((city) => {
+        return { ...city, isChecked: filterList.includes(city.id) };
+      });
+    } else {
+      newCityState = filterValue.cities;
+    }
+
+    console.log("Slutvärde: ", newCityState);
     const newFilterValue = {
       ...filterValue,
       fulltime: filterList.includes("1"),
@@ -32,19 +40,26 @@ export const Filter = () => {
     };
 
     setFilterValue(newFilterValue);
+    localStorage.setItem("filterValues", JSON.stringify(newFilterValue));
   };
 
   const handleSubmit = async () => {
-    const employmentType = filterValue.fulltime
+    const localValues = JSON.parse(
+      localStorage.getItem("filterValues") || "{}"
+    );
+    console.log("localValues: ", localValues);
+
+    const employmentType = localValues.fulltime
       ? filterValue.fullTimeText
       : filterValue.partTimeText;
+
     const searchValue = JSON.parse(localStorage.getItem("searchValue") || "[]");
 
-    const cityValue = filterValue.cities.filter(
-      (city) => city.isChecked === true
-    );
+    console.log("Local filters", localValues.cities);
 
-    console.log("City value: ", cityValue[0].coordinates);
+    const cityValue = localValues.cities.filter(
+      (city: any) => city.isChecked === true
+    );
 
     const filteredList = await getAllAds(
       searchValue,

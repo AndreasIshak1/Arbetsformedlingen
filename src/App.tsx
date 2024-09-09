@@ -56,9 +56,6 @@ function App() {
     }
   };
 
-  console.log(location?.address.city);
-
-  console.log(ads.savedAds);
   return (
     <>
       <AdContext.Provider value={ads}>
