@@ -5,6 +5,7 @@
 @import "./styles/singleAdPage.css";
 @import "./styles/homePage.css";
 @import "./styles/savedAdPage.css";
+@import "./styles/filter.css";
 
 * {
   margin: 0;

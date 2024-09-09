@@ -10,16 +10,23 @@ import { ActionType, AdReducer } from "./reducers/buttonReducer";
 import { DispatchContext } from "./context/DispatchContext";
 
 function App() {
-  const [ads, dispatch] = useReducer(AdReducer, { hits: [], savedAds: JSON.parse(localStorage.getItem("savedList") || "[]")})
+  const [ads, dispatch] = useReducer(AdReducer, {
+    hits: [],
+    savedAds: JSON.parse(localStorage.getItem("savedList") || "[]"),
+  });
   const [location, setLocation] = useState<ILocation>();
 
   useEffect(() => {
     const getApi = async () => {
-      const ImportedAds = await getAllAds("Stockholm" ,"parttime.min=100");
+      const ImportedAds = await getAllAds(
+        "Stockholm",
+        "parttime.min=100",
+        "59.329%2C18.068"
+      );
       dispatch({
         type: ActionType.LOADED,
-        payload: JSON.stringify(ImportedAds.hits)
-      })
+        payload: JSON.stringify(ImportedAds.hits),
+      });
     };
 
     const getUserLocation = () => {
@@ -44,14 +51,12 @@ function App() {
     if (lat && long) {
       const updatedLocation = await getCurrentLocation(lat, long);
       setLocation(updatedLocation);
-
     } else {
       console.log("Saknar lat & long");
     }
   };
 
   console.log(location?.address.city);
-
 
   console.log(ads.savedAds);
   return (

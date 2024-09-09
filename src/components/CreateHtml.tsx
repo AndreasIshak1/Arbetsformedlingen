@@ -16,6 +16,7 @@ export const CreateHtml = () => {
 
   return (
     <>
+      <h2>Antal resultat: {hits.length}</h2>
       <DigiLayoutContainer>
         {hits.map((ads) => {
           return (
@@ -25,7 +26,10 @@ export const CreateHtml = () => {
               afVerticalPadding
               key={ads.id}
             >
-              <section className="infoLeft" onClick={() => navigate(`/ad/${ads.id}`)}>
+              <section
+                className="infoLeft"
+                onClick={() => navigate(`/ad/${ads.id}`)}
+              >
                 <h2>{ads.headline}</h2>
                 <p>Tjänst typ: {ads.working_hours_type.label}</p>
                 <p>{ads.employer.name}</p>
@@ -34,12 +38,13 @@ export const CreateHtml = () => {
                 </p>
               </section>
               <div className="removeBtnContainer">
-                <Button actionType={ActionType.SAVED} ad={ads} >
-                  <><p>Spara</p></>
+                <Button actionType={ActionType.SAVED} ad={ads}>
+                  <>
+                    <p>Spara</p>
+                  </>
                 </Button>
               </div>
             </DigiLayoutBlock>
-
           );
         })}
       </DigiLayoutContainer>
