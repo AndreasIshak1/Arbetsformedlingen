@@ -1,0 +1,15 @@
+.logoContainer{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+}
+
+header {
+  background-color: white;
+}

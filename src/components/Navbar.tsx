@@ -1,6 +1,7 @@
 import { DigiHeader, DigiHeaderNavigation, DigiHeaderNavigationItem } from "@digi/arbetsformedlingen-react"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { NavLink } from "react-router-dom"
+import { AdContext } from "../context/AdContext"
 
 export const Navbar = () => {
   const [isCurrentPage, setIsCurrentPage] = useState({
@@ -8,6 +9,7 @@ export const Navbar = () => {
     saved: false
   })
 
+  const savedAds = useContext(AdContext);
   const handleClick = (currentPage: string) => {
     if (currentPage === "home") {
       setIsCurrentPage({
@@ -20,17 +22,19 @@ export const Navbar = () => {
         saved: true
       })
     }
-
   }
 
   return (
-    <DigiHeader
-      afSystemName="KarriärJakten"
-      afHideSystemName={false}
-      afMenuButtonText="Meny"
-    >
-      <a slot="header-logo" aria-label="Designsystemets startsida" href="/"></a>
+    <header>
+      <div className="logoContainer">
+        <a href="/">
+          <div className="logo">
+            <img className="logo" src="logo\logo.png" alt="logo" />
+          </div>
+        </a>
 
+        <h1>| KarriärJakten</h1>
+      </div>
       <div slot="header-navigation">
         <DigiHeaderNavigation
           afCloseButtonText="Stäng"
@@ -42,12 +46,12 @@ export const Navbar = () => {
           </DigiHeaderNavigationItem></NavLink>
 
           <NavLink to={"/saved"}><DigiHeaderNavigationItem afCurrentPage={isCurrentPage.saved} onClick={() => handleClick("saved")}>
-            <a href="/">Sparade</a>
+            <a href="/">Sparade({savedAds.savedAds.length})</a>
           </DigiHeaderNavigationItem></NavLink>
 
         </DigiHeaderNavigation>
       </div>
-    </DigiHeader>
+    </header>
 
 
   )

@@ -13,6 +13,7 @@ export const SavedAdHtml = () => {
   // onClick={() => navigate(`/ad/${ads.id}
 
   return <>
+    {savedAds.length === 0 ? <h1>Du har inga sparade annonser än! 😎</h1> : ""}
     {
       savedAds.map((ad) => {
         return (

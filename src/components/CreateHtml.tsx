@@ -1,6 +1,6 @@
 import {
   DigiLayoutBlock,
-  DigiLayoutContainer,
+  
 } from "@digi/arbetsformedlingen-react";
 import { useContext } from "react";
 import { AdContext } from "../context/AdContext";
@@ -16,13 +16,14 @@ export const CreateHtml = () => {
 
   return (
     <>
-      <h2>Antal resultat: {hits.length}</h2>
-      <DigiLayoutContainer>
+      <h2 className="totalJobs">Antal Jobb: {hits.length}</h2>
+      <section className="adsContainer">
+        {hits.length === 0 ? <h1>Inga resulat hittades</h1> : ""}
         {hits.map((ads) => {
           return (
             <DigiLayoutBlock
               afVariation={LayoutBlockVariation.PRIMARY}
-              className="homePage"
+              className="adbox"
               afVerticalPadding
               key={ads.id}
             >
@@ -30,24 +31,26 @@ export const CreateHtml = () => {
                 className="infoLeft"
                 onClick={() => navigate(`/ad/${ads.id}`)}
               >
-                <h2>{ads.headline}</h2>
-                <p>Tjänst typ: {ads.working_hours_type.label}</p>
+                <h2 className="adHeadline">{ads.headline}</h2>
+                <p>Tjänst typ:
+                  <span className="employmentType">{ads.working_hours_type.label}</span>
+                </p>
                 <p>{ads.employer.name}</p>
                 <p>
                   {ads.workplace_address.postcode} {ads.workplace_address.city}
                 </p>
               </section>
-              <div className="removeBtnContainer">
+              <section className="removeBtnContainer">
                 <Button actionType={ActionType.SAVED} ad={ads}>
                   <>
                     <p>Spara</p>
                   </>
                 </Button>
-              </div>
+              </section>
             </DigiLayoutBlock>
           );
         })}
-      </DigiLayoutContainer>
+      </section>
     </>
   );
 };

@@ -1,5 +1,12 @@
 :root {
   --digi--color--text--primary: black;
   --digi--global--text-width--base: 100%;
-}
+  --digi--color--background--inverted-1: #0087ff;
+  --digi--color--background--link:#0060ff;
+  --digi--color--background--neutral-5: #faeaff;
+} 
 
+.digi-header-navigation-item--active.sc-digi-header-navigation-item-s>a {
+  font-weight: bold;
+  box-shadow: inset 0 -4px 0 0 var(--digi--color--background--link);
+}

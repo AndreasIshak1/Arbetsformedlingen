@@ -6,12 +6,20 @@
 @import "./styles/homePage.css";
 @import "./styles/savedAdPage.css";
 @import "./styles/filter.css";
+@import "./styles/main.css";
+@import "./styles/notFound.css";
+@import "./styles/navbar.css";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-color: whitesmoke;
+}
+
 
 #root {
   width: 100%;
