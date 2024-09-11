@@ -23,25 +23,22 @@ export const Filter = () => {
     let newCityState;
 
     if (!filterList.includes("1") && !filterList.includes("2")) {
-      console.log("Värde av heltid: ", filterValue.fulltime);
       newCityState = filterValue.cities.map((city) => {
         return { ...city, isChecked: filterList.includes(city.id) };
       });
+      setFilterValue({
+        ...filterValue,
+        cities: newCityState,
+      });
     } else {
-      newCityState = filterValue.cities;
+      setFilterValue({
+        ...filterValue,
+        fulltime: filterList.includes("1"),
+        partTime: filterList.includes("2"),
+      });
     }
-
-    console.log("Slutvärde: ", newCityState);
-    const newFilterValue = {
-      ...filterValue,
-      fulltime: filterList.includes("1"),
-      partTime: filterList.includes("2"),
-      cities: newCityState,
-    };
-
-    setFilterValue(newFilterValue);
-    localStorage.setItem("filterValues", JSON.stringify(newFilterValue));
   };
+  localStorage.setItem("filterValues", JSON.stringify(filterValue));
 
   const handleSubmit = async () => {
     const localValues = JSON.parse(
