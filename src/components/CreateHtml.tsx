@@ -54,24 +54,32 @@ export const CreateHtml = () => {
                 </p>
               </section>
               <section className="removeBtnContainer">
-                <Button actionType={ActionType.SAVED} ad={ads}>
-                  <>
-                    <p>Spara</p>
-                  </>
-                </Button>
-
-                {savedAds.some((savedAd) => savedAd.adValue.id === ads.id) && (
-                  <DigiIconBookmarkSolid></DigiIconBookmarkSolid>
+                {savedAds.some((savedAd) => savedAd.adValue.id === ads.id) ? (
+                  <Button actionType={ActionType.REMOVED} ad={ads}>
+                    <>
+                      <p>Sparad</p>
+                    </>
+                  </Button>
+                ) : (
+                  <Button actionType={ActionType.SAVED} ad={ads}>
+                    <>
+                      <p>spara</p>
+                    </>
+                  </Button>
                 )}
               </section>
             </DigiLayoutBlock>
           );
         })}
-        <Pagination
-          adsPerPage={adsPerPage}
-          totalAds={hits.length}
-          paginate={paginate}
-        ></Pagination>
+        {hits.length > 0 ? (
+          <Pagination
+            adsPerPage={adsPerPage}
+            totalAds={hits.length}
+            paginate={paginate}
+          ></Pagination>
+        ) : (
+          ""
+        )}
       </section>
     </>
   );
