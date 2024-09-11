@@ -1,26 +1,35 @@
 import {
   DigiIconBookmarkSolid,
   DigiLayoutBlock,
-
 } from "@digi/arbetsformedlingen-react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AdContext } from "../context/AdContext";
 import { useNavigate } from "react-router-dom";
 import { LayoutBlockVariation } from "@digi/arbetsformedlingen";
 import { Button } from "./Button";
 import { ActionType } from "../reducers/buttonReducer";
+import { Pagination } from "./Pagination";
 
 //ta emot input här
 export const CreateHtml = () => {
   const { hits, savedAds } = useContext(AdContext);
   const navigate = useNavigate();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [adsPerPage] = useState(2);
+
+  const indexOfLastAd = currentPage * adsPerPage;
+  const indexOfFirstAd = indexOfLastAd - adsPerPage;
+  const currentAds = hits.slice(indexOfFirstAd, indexOfLastAd);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
     <>
       <h2 className="totalJobs">Antal Jobb: {hits.length}</h2>
       <section className="adsContainer">
         {hits.length === 0 ? <h1>Inga resulat hittades</h1> : ""}
-        {hits.map((ads) => {
+        {currentAds.map((ads) => {
           return (
             <DigiLayoutBlock
               afVariation={LayoutBlockVariation.PRIMARY}
@@ -33,8 +42,11 @@ export const CreateHtml = () => {
                 onClick={() => navigate(`/ad/${ads.id}`)}
               >
                 <h3 className="adHeadline">{ads.headline}</h3>
-                <p>Tjänst typ:
-                  <span className="employmentType">{ads.working_hours_type.label}</span>
+                <p>
+                  Tjänst typ:
+                  <span className="employmentType">
+                    {ads.working_hours_type.label}
+                  </span>
                 </p>
                 <p>{ads.employer.name}</p>
                 <p>
@@ -47,7 +59,7 @@ export const CreateHtml = () => {
                     <p>Spara</p>
                   </>
                 </Button>
-              
+
                 {savedAds.some((savedAd) => savedAd.adValue.id === ads.id) && (
                   <DigiIconBookmarkSolid></DigiIconBookmarkSolid>
                 )}
@@ -55,6 +67,11 @@ export const CreateHtml = () => {
             </DigiLayoutBlock>
           );
         })}
+        <Pagination
+          adsPerPage={adsPerPage}
+          totalAds={hits.length}
+          paginate={paginate}
+        ></Pagination>
       </section>
     </>
   );
