@@ -1,4 +1,4 @@
-import { DigiHeader, DigiHeaderNavigation, DigiHeaderNavigationItem } from "@digi/arbetsformedlingen-react"
+import { DigiHeaderNavigation, DigiHeaderNavigationItem } from "@digi/arbetsformedlingen-react"
 import { useContext, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { AdContext } from "../context/AdContext"
@@ -25,7 +25,7 @@ export const Navbar = () => {
   }
 
   return (
-    <header>
+    <section className="header-content">
       <div className="logoContainer">
         <a href="/">
           <div className="logo">
@@ -33,9 +33,9 @@ export const Navbar = () => {
           </div>
         </a>
 
-        <h1>| KarriärJakten</h1>
+        <h1 className="logo-title">| KarriärJakten</h1>
       </div>
-      <div slot="header-navigation">
+      <div className="header-navigation">
         <DigiHeaderNavigation
           afCloseButtonText="Stäng"
           afCloseButtonAriaLabel="Stäng meny"
@@ -46,12 +46,12 @@ export const Navbar = () => {
           </DigiHeaderNavigationItem></NavLink>
 
           <NavLink to={"/saved"}><DigiHeaderNavigationItem afCurrentPage={isCurrentPage.saved} onClick={() => handleClick("saved")}>
-            <a href="/">Sparade({savedAds.savedAds.length})</a>
+            <a href="/">Sparade <span className="accent-color">({savedAds.savedAds.length})</span></a>
           </DigiHeaderNavigationItem></NavLink>
 
         </DigiHeaderNavigation>
       </div>
-    </header>
+    </section>
 
 
   )

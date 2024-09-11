@@ -3,6 +3,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  
 }
 
 .logo {
@@ -10,6 +11,10 @@
   height: 4rem;
 }
 
-header {
-  background-color: white;
+.header-content {
+  background-color: inherit;
+}
+
+.accent-color{
+  color: var(--digi--color--text--link);
 }

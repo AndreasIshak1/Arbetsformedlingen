@@ -17,5 +17,12 @@
 .removeBtnContainer{
   display: flex;
   width: 50%;
-  justify-content: end;
+  flex-direction: column;
+  align-items: end;
+ 
+}
+ .sc-digi-icon-bookmark-solid{
+height: var(--digi--icon--height);
+  padding: 10px 24px;
+  color:var(--digi--color--text--link);
 }

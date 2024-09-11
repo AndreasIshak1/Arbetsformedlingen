@@ -1,6 +1,7 @@
 import {
+  DigiIconBookmarkSolid,
   DigiLayoutBlock,
-  
+
 } from "@digi/arbetsformedlingen-react";
 import { useContext } from "react";
 import { AdContext } from "../context/AdContext";
@@ -11,7 +12,7 @@ import { ActionType } from "../reducers/buttonReducer";
 
 //ta emot input här
 export const CreateHtml = () => {
-  const { hits } = useContext(AdContext);
+  const { hits, savedAds } = useContext(AdContext);
   const navigate = useNavigate();
 
   return (
@@ -31,7 +32,7 @@ export const CreateHtml = () => {
                 className="infoLeft"
                 onClick={() => navigate(`/ad/${ads.id}`)}
               >
-                <h2 className="adHeadline">{ads.headline}</h2>
+                <h3 className="adHeadline">{ads.headline}</h3>
                 <p>Tjänst typ:
                   <span className="employmentType">{ads.working_hours_type.label}</span>
                 </p>
@@ -46,6 +47,10 @@ export const CreateHtml = () => {
                     <p>Spara</p>
                   </>
                 </Button>
+              
+                {savedAds.some((savedAd) => savedAd.adValue.id === ads.id) && (
+                  <DigiIconBookmarkSolid></DigiIconBookmarkSolid>
+                )}
               </section>
             </DigiLayoutBlock>
           );

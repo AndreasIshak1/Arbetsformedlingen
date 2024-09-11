@@ -1,0 +1,45 @@
+:root {
+
+  /* text vars */
+  --digi--color--text--primary: black;
+  --digi--global--text-width--base: 100%;
+
+  /* btn länker vars */
+  --digi--color--background--inverted-1: #0060ff;
+  --digi--color--background--link:#0060ff;
+
+  --digi--color--text--primary:rgb(86, 83, 83);
+  --digi--color--text--secondary:#00317f;
+  --digi--color--text--link:#EF767A;
+  --digi--color--text--link-hover:#e8363c;
+  --digi--color--text--link-visited:#894245;
+  --digi--color--background--primary:rgb(245, 245, 245);
+
+/* icons */
+  --digi--icon--width: 10px;
+  --digi--icon--height: 10px;
+
+
+  /* info card */
+  --digi--color--background--neutral-5: #f1d5f9;
+
+
+  /* meny bg color */
+  --digi--color--background--neutral-8:rgb(245, 245, 245);
+ 
+  --digi--global--typography--text-decoration--link: underline;
+  --digi--global--typography--text-decoration--default: none;
+  --digi--global--typography--font-family--mono: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --digi--global--typography--font-family--default: "Open Sans";
+  --digi--global--typography--font-weight--bold: 700;
+  --digi--global--typography--font-weight--semibold: 600;
+  --digi--global--typography--font-weight--light: 300;
+  --digi--global--typography--font-weight--regular: 400;
+
+
+} 
+
+.digi-header-navigation-item--active.sc-digi-header-navigation-item-s>a {
+  font-weight: bold;
+  box-shadow: inset 0 -4px 0 0 var(--digi--color--background--link);
+}
