@@ -1,31 +1,30 @@
 .adbox {
   width: 75%;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 0.5rem;
   background-color: var(--digi--color--background--primary);
   margin: 1rem auto;
- 
-transition: all 0.3s ease;
+
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .adbox:hover {
-  border: 1px solid var(var( --digi--color--background--inverted-1));
+  border: 1px solid var(var(--digi--color--background--inverted-1));
   transform: scale(1);
 
-  -webkit-box-shadow: 0px 0px 23px -3px var( --digi--color--background--inverted-1);
-  -moz-box-shadow: 0px 0px 23px -3px var( --digi--color--background--inverted-1);
-  box-shadow: 0px 0px 23px -3px var( --digi--color--background--inverted-1);
+  -webkit-box-shadow: 0px 0px 23px -3px var(--digi--color--background--inverted-1);
+  -moz-box-shadow: 0px 0px 23px -3px var(--digi--color--background--inverted-1);
+  box-shadow: 0px 0px 23px -3px var(--digi--color--background--inverted-1);
 
-.adHeadline {
-  text-decoration: underline;
- }
+  .adHeadline {
+    text-decoration: underline;
+  }
 }
 
 .digi-form-input {
   width: 100%;
   margin: 1rem auto;
-  
 }
 
 /* .adsContainer {
@@ -36,20 +35,18 @@ transition: all 0.3s ease;
 } */
 
 .employmentType {
-  background-color:var(--digi--color--background--neutral-5);
-  color:var(--digi--color--text--primary);
+  background-color: var(--digi--color--background--neutral-5);
+  color: var(--digi--color--text--primary);
   margin-left: 0.5rem;
   border-radius: 2px;
   padding: 0.3rem;
-
 }
 .totalJobs {
   padding: 0.5rem;
   margin-top: 1rem;
-  color: var(--digi--color--background--inverted-1)
+  color: var(--digi--color--text--secondary);
 }
 
-.digi-logo-small{
-display: none;
+.digi-logo-small {
+  display: none;
 }
-

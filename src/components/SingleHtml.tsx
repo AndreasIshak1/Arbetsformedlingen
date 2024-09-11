@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IHits } from "../models/IHits";
 import axios from "axios";
@@ -18,9 +18,11 @@ import {
 import parse from "html-react-parser";
 import { Button } from "./Button";
 import { ActionType } from "../reducers/buttonReducer";
+import { AdContext } from "../context/AdContext";
 export const SingleHtml = () => {
   const { id } = useParams<{ id: string }>();
   const [singleAd, setSingAd] = useState<IHits>();
+  const { savedAds } = useContext(AdContext);
 
   useEffect(() => {
     const getSingelApi = async () => {
@@ -55,7 +57,7 @@ export const SingleHtml = () => {
               afHeadingLevel={InfoCardHeadingLevel.H3}
               afType={InfoCardType.TIP}
               afVariation={InfoCardVariation.SECONDARY}
-            //afSize={infoCardSize.STANDARD}
+              //afSize={infoCardSize.STANDARD}
             >
               <p>
                 {parse(
@@ -73,7 +75,7 @@ export const SingleHtml = () => {
           afHeadingLevel={InfoCardHeadingLevel.H2}
           afType={InfoCardType.TIP}
           afVariation={InfoCardVariation.PRIMARY}
-        //afSize={infoCardSize.STANDARD}
+          //afSize={infoCardSize.STANDARD}
         >
           <DigiLinkExternal
             afHref={
@@ -92,9 +94,19 @@ export const SingleHtml = () => {
             Adress :{singleAd?.workplace_address.street_address},{" "}
             {singleAd?.workplace_address.postcode}
           </p>
-          <Button actionType={ActionType.SAVED} ad={singleAd}>
-            <><p>Spara annons</p></>
-          </Button>
+          {savedAds.some((savedAd) => savedAd.adValue.id === singleAd?.id) ? (
+            <Button actionType={ActionType.REMOVED} ad={singleAd}>
+              <>
+                <p>Sparad</p>
+              </>
+            </Button>
+          ) : (
+            <Button actionType={ActionType.SAVED} ad={singleAd}>
+              <>
+                <p>Spara</p>
+              </>
+            </Button>
+          )}
         </DigiInfoCard>
       </DigiLayoutContainer>
     </>

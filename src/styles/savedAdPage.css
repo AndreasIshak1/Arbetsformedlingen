@@ -1,28 +1,36 @@
-.savedAdContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem;
+.savedAdContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
 }
 
 .savedAdBlock {
-  width: 50%;
+  /* width: 50%;
   border-radius: 20px;
   border: 1px solid;
   padding: 2rem;
-  background-color:var(--digi--color--background--neutral-5);
+  background-color:var(--digi--color--background--neutral-5); */
+
+  width: 75%;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: var(--digi--color--background--primary);
+  margin: 1rem auto;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.removeBtnContainer{
+.removeBtnContainer {
   display: flex;
   width: 50%;
   flex-direction: column;
   align-items: end;
- 
 }
- .sc-digi-icon-bookmark-solid{
-height: var(--digi--icon--height);
+.sc-digi-icon-bookmark-solid {
+  height: var(--digi--icon--height);
   padding: 10px 24px;
-  color:var(--digi--color--text--link);
+  color: var(--digi--color--text--link);
 }

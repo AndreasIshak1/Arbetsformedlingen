@@ -26,7 +26,10 @@ export const CreateHtml = () => {
 
   return (
     <>
-      <h2 className="totalJobs">Antal Jobb: {hits.length}</h2>
+      <h2>
+        {" "}
+        <span className="totalJobs">Antal Jobb: {hits.length} </span>
+      </h2>
       <section className="adsContainer">
         {hits.length === 0 ? <h1>Inga resulat hittades</h1> : ""}
         {currentAds.map((ads) => {
@@ -63,7 +66,7 @@ export const CreateHtml = () => {
                 ) : (
                   <Button actionType={ActionType.SAVED} ad={ads}>
                     <>
-                      <p>spara</p>
+                      <p>Spara</p>
                     </>
                   </Button>
                 )}
