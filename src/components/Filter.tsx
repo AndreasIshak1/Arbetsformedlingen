@@ -54,15 +54,22 @@ export const Filter = () => {
 
     console.log("Local filters", localValues.cities);
 
-    const cityValue = localValues.cities.filter(
+    let cityValue = localValues.cities.filter(
       (city: any) => city.isChecked === true
     );
+
+    if (cityValue.length === 0) {
+      cityValue = [
+        { id: "3", isChecked: true, coordinates: "59.329%2C18.068" },
+      ];
+    }
 
     const filteredList = await getAllAds(
       searchValue,
       employmentType,
       cityValue[0].coordinates
     );
+    console.log(filteredList);
 
     const action = {
       type: ActionType.FILTERED,
