@@ -16,7 +16,7 @@ export const CreateHtml = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [adsPerPage] = useState(2);
+  const [adsPerPage] = useState(10);
 
   const indexOfLastAd = currentPage * adsPerPage;
   const indexOfFirstAd = indexOfLastAd - adsPerPage;

@@ -31,7 +31,7 @@ export const Pagination = ({
       <DigiNavigationPagination
         afTotalPages={pageNumbers.length}
         afInitActivePage={1}
-        onAfOnPageChange={() => paginate(2)}
+        onAfOnPageChange={(e) => paginate(e.detail)}
         //afMSetCurrentPage={(pageNumber: number) => paginate(pageNumber)}
       ></DigiNavigationPagination>
     </>

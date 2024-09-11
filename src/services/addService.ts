@@ -6,7 +6,7 @@ export const getAllAds = async (
   employementType: string,
   location: string
 ): Promise<IAds> => {
-  const url = `https://jobsearch.api.jobtechdev.se/search?q=${searchQuery}&${employementType}&qfields=occupation&position=${location}&position.radius=30&offset=0&limit=10&stats.limit=20`;
+  const url = `https://jobsearch.api.jobtechdev.se/search?q=${searchQuery}&${employementType}&qfields=occupation&position=${location}&position.radius=30&offset=0&limit=50&stats.limit=20`;
   const data = await getData<IAds>(url);
   return data;
 };
