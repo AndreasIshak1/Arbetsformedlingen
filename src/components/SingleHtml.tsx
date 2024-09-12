@@ -91,8 +91,9 @@ export const SingleHtml = () => {
           <p>{singleAd?.employer.name}</p>
           <p>{singleAd?.workplace_address.region}</p>
           <p>
-            Adress :{singleAd?.workplace_address.street_address},{" "}
-            {singleAd?.workplace_address.postcode}
+            {singleAd?.workplace_address.street_address
+              ? `Adress: ${singleAd?.workplace_address.street_address}`
+              : ""}{" "}
           </p>
           {savedAds.some((savedAd) => savedAd.adValue.id === singleAd?.id) ? (
             <Button actionType={ActionType.REMOVED} ad={singleAd}>

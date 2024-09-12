@@ -16,7 +16,7 @@
   width: 75%;
   border-radius: 10px;
   padding: 0.5rem;
-  background-color: var(--digi--color--background--primary);
+  background-color: var(--digi--color--background--neutral-5);
   margin: 1rem auto;
 
   transition: all 0.3s ease;

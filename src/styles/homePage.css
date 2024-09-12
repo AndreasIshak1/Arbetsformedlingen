@@ -27,13 +27,6 @@
   margin: 1rem auto;
 }
 
-/* .adsContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
-
 .employmentType {
   background-color: var(--digi--color--background--neutral-5);
   color: var(--digi--color--text--primary);
@@ -49,4 +42,9 @@
 
 .digi-logo-small {
   display: none;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
 }

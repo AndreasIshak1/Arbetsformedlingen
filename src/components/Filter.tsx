@@ -44,15 +44,12 @@ export const Filter = () => {
     const localValues = JSON.parse(
       localStorage.getItem("filterValues") || "{}"
     );
-    console.log("localValues: ", localValues);
 
     const employmentType = localValues.fulltime
       ? filterValue.fullTimeText
       : filterValue.partTimeText;
 
     const searchValue = JSON.parse(localStorage.getItem("searchValue") || "[]");
-
-    console.log("Local filters", localValues.cities);
 
     let cityValue = localValues.cities.filter(
       (city: any) => city.isChecked === true
@@ -89,13 +86,9 @@ export const Filter = () => {
             { id: "1", label: "Heltid" },
             { id: "2", label: "Deltid" },
           ]}
-          //afCheckItems={["1"]} // optional, override internal check state of component with filter ids
           onAfChangeFilter={(e) => updateFilter([e.detail.id])}
           onAfResetFilter={() => console.log("reset filter")}
           onAfSubmitFilter={() => handleSubmit()}
-          onAfCloseFilter={(e) =>
-            console.log("submit filter", e.detail.listItems, e.detail.checked)
-          }
         ></DigiFormFilter>
 
         <DigiFormFilter
@@ -107,17 +100,11 @@ export const Filter = () => {
             { id: "5", label: "Malmö" },
             { id: "6", label: "Uppsala" },
           ]}
-          //afCheckItems={["1"]} // optional, override internal check state of component with filter ids
           onAfChangeFilter={(e) => updateFilter([e.detail.id])}
           onAfResetFilter={() => console.log("reset filter")}
           onAfSubmitFilter={() => handleSubmit()}
-          onAfCloseFilter={(e) =>
-            console.log("submit filter", e.detail.listItems, e.detail.checked)
-          }
         ></DigiFormFilter>
       </section>
     </>
   );
 };
-
-//https://jobsearch.api.jobtechdev.se/search?parttime.min=50&parttime.max=100&q=diskare&qfields=occupation&location=Stockholm&offset=0&limit=10&stats.limit=10

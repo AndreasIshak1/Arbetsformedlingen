@@ -1,9 +1,8 @@
-.logoContainer{
+.logoContainer {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  
 }
 
 .logo {
@@ -15,6 +14,6 @@
   background-color: inherit;
 }
 
-.accent-color{
+.accent-color {
   color: var(--digi--color--text--link);
 }

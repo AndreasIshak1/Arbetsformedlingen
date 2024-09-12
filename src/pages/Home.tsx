@@ -11,14 +11,17 @@ export const Home = () => {
     <>
       <Input />
       <CreateHtml />
-      {loader ? (
-        <DigiLoaderSpinner
-          afSize={LoaderSpinnerSize.LARGE}
-          afText="Laddar"
-        ></DigiLoaderSpinner>
-      ) : (
-        ""
-      )}
+
+      <section className="spinner">
+        {loader ? (
+          <DigiLoaderSpinner
+            afSize={LoaderSpinnerSize.LARGE}
+            afText="Laddar"
+          ></DigiLoaderSpinner>
+        ) : (
+          ""
+        )}
+      </section>
     </>
   );
 };
