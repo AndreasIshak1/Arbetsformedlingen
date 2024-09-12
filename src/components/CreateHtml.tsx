@@ -12,7 +12,7 @@ import { Pagination } from "./Pagination";
 
 //ta emot input här
 export const CreateHtml = () => {
-  const { hits, savedAds } = useContext(AdContext);
+  const { hits, savedAds, loader } = useContext(AdContext);
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,7 +31,11 @@ export const CreateHtml = () => {
         <span className="totalJobs">Antal Jobb: {hits.length} </span>
       </h2>
       <section className="adsContainer">
-        {hits.length === 0 ? <h1>Inga resulat hittades</h1> : ""}
+        {currentAds.length === 0 && !loader ? (
+          <h1>Inga resulat hittades</h1>
+        ) : (
+          ""
+        )}
         {currentAds.map((ads) => {
           return (
             <DigiLayoutBlock

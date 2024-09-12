@@ -1,7 +1,7 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { router } from "./router/Router";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { AdContext } from "./context/AdContext";
 import { getAllAds } from "./services/addService";
 import { ActionType, AdReducer } from "./reducers/buttonReducer";
@@ -11,9 +11,14 @@ function App() {
   const [ads, dispatch] = useReducer(AdReducer, {
     hits: [],
     savedAds: JSON.parse(localStorage.getItem("savedList") || "[]"),
+    loader: false,
   });
 
   useEffect(() => {
+    dispatch({
+      type: ActionType.SHOWSPINNER,
+      payload: "1",
+    });
     const getUserLocation = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -22,7 +27,6 @@ function App() {
         });
       } else {
         getApi(59.3305346, 17.9841697);
-        alert("heej");
       }
     };
 
@@ -35,6 +39,11 @@ function App() {
       dispatch({
         type: ActionType.LOADED,
         payload: JSON.stringify(ImportedAds.hits),
+      });
+
+      dispatch({
+        type: ActionType.HIDESPINNER,
+        payload: "2",
       });
     };
 
