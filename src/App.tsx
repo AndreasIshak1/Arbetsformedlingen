@@ -19,10 +19,10 @@ function App() {
         navigator.geolocation.getCurrentPosition((position) => {
           const { latitude, longitude } = position.coords;
           getApi(latitude, longitude);
-          console.log(latitude, longitude);
         });
       } else {
-        console.log("Saknar tillstånd för GeoLocation ");
+        getApi(59.3305346, 17.9841697);
+        alert("heej");
       }
     };
 
